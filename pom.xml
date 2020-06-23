@@ -15,8 +15,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -26,13 +25,13 @@
   </parent>
 
   <artifactId>keystore-tool</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1</version>
 
   <scm>
     <connection>scm:git:git@github.com:tomitribe/keystore-tool.git</connection>
     <url>scm:git:git@github.com:tomitribe/keystore-tool.git</url>
     <developerConnection>scm:git:git@github.com:tomitribe/keystore-tool.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>keystore-tool-0.0.1</tag>
   </scm>
 
 
