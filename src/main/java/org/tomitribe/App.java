@@ -44,30 +44,34 @@ public class App {
             final @Option("privatekey") @Required @IsFile File privateKey,
             final @Option("certificate") File[] certificates) throws Exception {
 
-        final KeyStore ks = KeyStore.getInstance(storeType);
+        try {
+            final KeyStore ks = KeyStore.getInstance(storeType);
 
-        if (! keyStore.exists()) {
-            ks.load(null, keystorePass.toCharArray());
-        } else {
-            ks.load(new FileInputStream(keyStore), keyPass.toCharArray());
-        }
-
-
-        final Key key = ks.getKey(keyAlias, keyPass.toCharArray());
-        if (key != null) {
-            throw new RuntimeException("Entry with alias " + keyAlias + " already exists in the keystore");
-        }
-
-        final PrivateKey pk = PEM.readPrivateKey(new FileInputStream(privateKey));
-        final List<Certificate> chain = new ArrayList<Certificate>();
-
-        for (final File certFile : certificates) {
-            if (certFile.exists() && certFile.isFile()) {
-                chain.addAll(Arrays.asList(PEM.readCertificates(new FileInputStream(certFile))));
+            if (! keyStore.exists()) {
+                ks.load(null, keystorePass.toCharArray());
+            } else {
+                ks.load(new FileInputStream(keyStore), keyPass.toCharArray());
             }
-        }
 
-        ks.setKeyEntry(keyAlias, pk, keyPass.toCharArray(), chain.toArray(new Certificate[0]));
-        ks.store(new FileOutputStream(keyStore), keystorePass.toCharArray());
+
+            final Key key = ks.getKey(keyAlias, keyPass.toCharArray());
+            if (key != null) {
+                throw new RuntimeException("Entry with alias " + keyAlias + " already exists in the keystore");
+            }
+
+            final PrivateKey pk = PEM.readPrivateKey(new FileInputStream(privateKey));
+            final List<Certificate> chain = new ArrayList<Certificate>();
+
+            for (final File certFile : certificates) {
+                if (certFile.exists() && certFile.isFile()) {
+                    chain.addAll(Arrays.asList(PEM.readCertificates(new FileInputStream(certFile))));
+                }
+            }
+
+            ks.setKeyEntry(keyAlias, pk, keyPass.toCharArray(), chain.toArray(new Certificate[0]));
+            ks.store(new FileOutputStream(keyStore), keystorePass.toCharArray());
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
     }
 }
