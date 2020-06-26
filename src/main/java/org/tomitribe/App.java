@@ -41,7 +41,7 @@ public class App {
             final @Option("storepass") @Required String keystorePass,
             final @Option("alias") @Required String keyAlias,
             final @Option("keypass") @Required String keyPass,
-            final @Option("privatekey") @Required @IsFile File privateKey,
+            final @Option("privatekey") @Required File privateKey,
             final @Option("certificate") File[] certificates) throws Exception {
 
         try {
