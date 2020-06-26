@@ -28,13 +28,13 @@
   </parent>
 
   <artifactId>keystore-tool</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4-SNAPSHOT</version>
 
   <scm>
     <connection>scm:git:git@github.com:tomitribe/keystore-tool.git</connection>
     <url>scm:git:git@github.com:tomitribe/keystore-tool.git</url>
     <developerConnection>scm:git:git@github.com:tomitribe/keystore-tool.git</developerConnection>
-    <tag>keystore-tool-0.0.3</tag>
+    <tag>HEAD</tag>
   </scm>
 
 
